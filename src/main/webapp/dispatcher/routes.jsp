@@ -20,18 +20,12 @@
 		        </button>
 			    <div class="collapse navbar-collapse" id="navbarResponsive">
 			      	<ul class="navbar-nav ml-auto" id="navbarResponsiveUL">
-			        	<li class="nav-item">
-			          		<a class="nav-link" href="index.html">Home</a>
-			        	</li>
-			        	<li class="nav-item">
-			          		<a class="nav-link" href="request_route.html">Request route</a>
-			        	</li>
-			        	<li class="nav-item">
-			          		<a class="nav-link" href="login.html">Sign In</a>
-			        	</li>
-			        	<li class="nav-item">
-			          		<a class="nav-link" href="register.html">Sign Up</a>
-			        	</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profile">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sign-out">Sign Out</a>
+                        </li>
 			      	</ul>
 			    </div>
 			</div>
@@ -42,18 +36,18 @@
 		            <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start">
 		                <div class="collapse navbar-collapse">
 		                    <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
-		                        <li class="nav-item active">
-		                            <a class="nav-link pl-0" href="routes.jsp">Routes</a>
-		                        </li>
-		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="drivers.jsp">Drivers</a>
-		                        </li>
-		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="vehicles.jsp">Vehicles</a>
-		                        </li>
-		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="applications.jsp">Applications</a>
-		                        </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-0" href="routes">Routes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-0" href="drivers">Drivers</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-0" href="vehicles">Vehicles</a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link pl-0" href="applications">Applications</a>
+                                </li>
 		                    </ul>
 		                </div>
 		            </nav>

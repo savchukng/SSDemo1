@@ -27,4 +27,15 @@ public class ApplicationDAO extends DAO {
             e.printStackTrace();
         }
     }
+    public void setDriverId(int appId, int driverId){
+        String query = "UPDATE applications " +
+                "SET driver_id=" + driverId + " WHERE id=" + appId;
+        try(Connection connection = HikariCPDataSource.getConnection();
+            Statement stmt = connection.createStatement()){
+            stmt.executeUpdate(query);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }

@@ -21,7 +21,7 @@ public class ApplicationsController extends HttpServlet {
         ApplicationDAO appDao = new ApplicationDAO();
         List<Object> apps = appDao.getAll();
         req.setAttribute("apps", apps);
-        RequestDispatcher rd = req.getRequestDispatcher("applications.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("dispatcher/applications.jsp");
         rd.forward(req, resp);
     }
 }

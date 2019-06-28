@@ -8,16 +8,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<style>
-			.bs-example{
-				text-align: center;
-			}
-			#fixed-sidebar {
-			    position: fixed;
-			    max-width: 20%;
-			    color: black;
-			}
-		</style>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -31,16 +21,16 @@
 			    <div class="collapse navbar-collapse" id="navbarResponsive">
 			      	<ul class="navbar-nav ml-auto" id="navbarResponsiveUL">
 			        	<li class="nav-item">
-			          		<a class="nav-link" href="index.html">Home</a>
+			          		<a class="nav-link" href="../index.html">Home</a>
 			        	</li>
 			        	<li class="nav-item">
-			          		<a class="nav-link" href="request_route.html">Request route</a>
+			          		<a class="nav-link" href="../user/request_route.html">Request route</a>
 			        	</li>
 			        	<li class="nav-item">
-			          		<a class="nav-link" href="login.html">Sign In</a>
+			          		<a class="nav-link" href="../login.html">Sign In</a>
 			        	</li>
 			        	<li class="nav-item">
-			          		<a class="nav-link" href="register.html">Sign Up</a>
+			          		<a class="nav-link" href="../register.html">Sign Up</a>
 			        	</li>
 			      	</ul>
 			    </div>
@@ -55,14 +45,14 @@
 		                        <li class="nav-item">
 		                            <a class="nav-link pl-0" href="routes.jsp">Routes</a>
 		                        </li>
-		                        <li class="nav-item active">
-		                            <a class="nav-link pl-0" href="drivers">Drivers</a>
-		                        </li>
 		                        <li class="nav-item">
+		                            <a class="nav-link pl-0" href="drivers.jsp">Drivers</a>
+		                        </li>
+		                        <li class="nav-item active">
 		                            <a class="nav-link pl-0" href="vehicles.jsp">Vehicles</a>
 		                        </li>
 		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="applications">Applications</a>
+		                            <a class="nav-link pl-0" href="applications.jsp">Applications</a>
 		                        </li>
 		                    </ul>
 		                </div>
@@ -73,18 +63,24 @@
 						<thead class="thead-light">
 					  		<tr>
 					      		<th scope="col">ID</th>
-					    		<th scope="col">First Name</th>
-					    		<th scope="col">Last Name</th>
-					      		<th scope="col">Vehicle</th>
+					    		<th scope="col">Make</th>
+					    		<th scope="col">Model</th>
+					    		<th scope="col">Year</th>
+					    		<th scope="col">Number Plate</th>
+					      		<th scope="col">State</th>
+					      		<th scope="col">Current driver</th>
 					    	</tr>
 					  	</thead>
 					  	<tbody>
-						<c:forEach items="${drivers}" var="driver">
+						<c:forEach items="${vehicles}" var="vehicle">
 							<tr>
-								<th scope="row"><c:out value="${driver.id}"/></th>
-								<td><c:out value="${driver.firstName}"/></td>
-								<td><c:out value="${driver.lastName}"/></td>
-								<td><a href="#"><c:out value="${driver.driversVehicle}"/></a></td>
+								<th scope="row"><c:out value="${vehicle.id}"/></th>
+								<td><c:out value="${vehicle.make}"/></td>
+								<td><c:out value="${vehicle.model}"/></td>
+								<td><c:out value="${vehicle.year}"/></td>
+								<td><c:out value="${vehicle.numberPlate}"/></td>
+								<td><c:out value="${vehicle.state}"/></td>
+								<td><c:out value="${vehicle.driverId}"/></td>
 							</tr>
 						</c:forEach>
 					  </tbody>

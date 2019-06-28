@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -30,16 +31,16 @@
 			    <div class="collapse navbar-collapse" id="navbarResponsive">
 			      	<ul class="navbar-nav ml-auto" id="navbarResponsiveUL">
 			        	<li class="nav-item">
-			          		<a class="nav-link" href="index.html">Home</a>
+			          		<a class="nav-link" href="../index.html">Home</a>
 			        	</li>
 			        	<li class="nav-item">
-			          		<a class="nav-link" href="/check-request-route">Request route</a>
+			          		<a class="nav-link" href="../user/request_route.html">Request route</a>
 			        	</li>
 			        	<li class="nav-item">
-			          		<a class="nav-link" href="login.html">Sign In</a>
+			          		<a class="nav-link" href="../login.html">Sign In</a>
 			        	</li>
 			        	<li class="nav-item">
-			          		<a class="nav-link" href="register.html">Sign Up</a>
+			          		<a class="nav-link" href="../register.html">Sign Up</a>
 			        	</li>
 			      	</ul>
 			    </div>
@@ -52,30 +53,42 @@
 		                <div class="collapse navbar-collapse">
 		                    <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
 		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="dispatcher/routes.jsp">Routes</a>
+		                            <a class="nav-link pl-0" href="routes.jsp">Routes</a>
+		                        </li>
+		                        <li class="nav-item active">
+		                            <a class="nav-link pl-0" href="drivers">Drivers</a>
 		                        </li>
 		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="dispatcher/drivers.jsp">Drivers</a>
+		                            <a class="nav-link pl-0" href="vehicles.jsp">Vehicles</a>
 		                        </li>
 		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="dispatcher/vehicles.jsp">Vehicles</a>
-		                        </li>
-		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="applications.jsp">Applications</a>
+		                            <a class="nav-link pl-0" href="applications">Applications</a>
 		                        </li>
 		                    </ul>
 		                </div>
 		            </nav>
 		        </aside>
-		        <main class="col" style="height: 630px; margin-top: 50px;">
-		        	<img src="MercedesBenzATEGO816.jpg" alt="Vehicle Photo" style="width: 40%; float: left; padding: 30px;">
-		        	<div>
-			        	<p>Make:</p>
-			        	<p>Model:</p>
-			        	<p>Year:</p>
-			        	<p>Number plate:</p>
-			        	<p>State:</p>
-		        	</div>
+		        <main class="col" style="height: 630px;">
+		        	<table class="table table-hover" style="margin:2%">
+						<thead class="thead-light">
+					  		<tr>
+					      		<th scope="col">ID</th>
+					    		<th scope="col">First Name</th>
+					    		<th scope="col">Last Name</th>
+					      		<th scope="col">Vehicle</th>
+					    	</tr>
+					  	</thead>
+					  	<tbody>
+						<c:forEach items="${drivers}" var="driver">
+							<tr>
+								<th scope="row"><c:out value="${driver.id}"/></th>
+								<td><c:out value="${driver.firstName}"/></td>
+								<td><c:out value="${driver.lastName}"/></td>
+								<td><a href="#"><c:out value="${driver.driversVehicle}"/></a></td>
+							</tr>
+						</c:forEach>
+					  </tbody>
+					</table>
 			    </main>
 		    </div>
 		</div>

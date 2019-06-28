@@ -1,4 +1,3 @@
-
 package controller;
 
 import dao.DAO;
@@ -13,8 +12,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/check-login")
-public class CheckLoginController extends HttpServlet {
+@WebServlet("/login")
+public class LoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
