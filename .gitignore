@@ -25,7 +25,6 @@ hs_err_pid*
 # maven
 target/
 dependency-reduced-pom.xml
-pom.xml
 
 # intellij
 *.iml
