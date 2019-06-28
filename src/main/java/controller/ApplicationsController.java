@@ -20,7 +20,6 @@ public class ApplicationsController extends HttpServlet {
             throws ServletException, IOException {
         ApplicationDAO appDao = new ApplicationDAO();
         List<Object> apps = appDao.getAll();
-        appDao.close();
         req.setAttribute("apps", apps);
         RequestDispatcher rd = req.getRequestDispatcher("applications.jsp");
         rd.forward(req, resp);

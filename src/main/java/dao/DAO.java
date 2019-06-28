@@ -18,19 +18,14 @@ import java.util.List;
 
 
 public class DAO implements DAOInterface{
-    private static final String dbUrl = "jdbc:mysql://localhost:3306/vehicles_base";
-    private static final String user = "root";
-    private static final String password = "lolikurt";
 
     private Class clss;
     private String table;
     private List<Field> properties;
     private HashMap<Field, String> columns;
-    protected Connection connection;
 
     public DAO(Class clss){
         try {
-            connection = HikariCPDataSource.getConnection();
             this.clss = clss;
             TABLE annotation = (TABLE) clss.getAnnotation(TABLE.class);
             table = annotation.value();
@@ -60,7 +55,8 @@ public class DAO implements DAOInterface{
 
     public List<Object> getAll(){
         List<Object> objects = new LinkedList<>();
-        try(Statement stmt = connection.createStatement();
+        try(Connection connection = HikariCPDataSource.getConnection();
+            Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM " + table + ";")){
             while(rs.next()){
                 Constructor constructor = clss.getDeclaredConstructor();
@@ -70,14 +66,15 @@ public class DAO implements DAOInterface{
             }
         }
         catch(Exception e){
-            System.out.println(e);
+            e.printStackTrace();
         }
         return objects;
     }
 
     public Object get(int id){
         Object newObject = null;
-        try(PreparedStatement stmt = connection.prepareStatement("SELECT * FROM " + table + " WHERE id = ?;")){
+        try(Connection connection = HikariCPDataSource.getConnection();
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM " + table + " WHERE id = ?;")){
             Constructor constructor = clss.getDeclaredConstructor();
             newObject = constructor.newInstance();
             stmt.setInt(1, id);
@@ -86,14 +83,15 @@ public class DAO implements DAOInterface{
             parseResult(newObject, rs);
         }
         catch (Exception e){
-            System.out.println(e);
+            e.printStackTrace();
         }
         return newObject;
     }
 
     public Object get(String column, String value) {
         Object newObject = null;
-        try(PreparedStatement stmt = connection.prepareStatement("SELECT * FROM " + table + " WHERE " + column + " = ?;")){
+        try(Connection connection = HikariCPDataSource.getConnection();
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM " + table + " WHERE " + column + " = ?;")){
             Constructor constructor = clss.getDeclaredConstructor();
             stmt.setString(1, value);
             ResultSet rs = stmt.executeQuery();
@@ -111,7 +109,8 @@ public class DAO implements DAOInterface{
 
     public Object get(String column, int value) {
         Object newObject = null;
-        try(PreparedStatement stmt = connection.prepareStatement("SELECT * FROM " + table + " WHERE " + column + " = ?;")){
+        try(Connection connection = HikariCPDataSource.getConnection();
+            PreparedStatement stmt = connection.prepareStatement("SELECT * FROM " + table + " WHERE " + column + " = ?;")){
             Constructor constructor = clss.getDeclaredConstructor();
             stmt.setInt(1, value);
             ResultSet rs = stmt.executeQuery();
@@ -130,7 +129,7 @@ public class DAO implements DAOInterface{
     public void save(Object obj){
         String firstPartUpdate = "INSERT INTO " + table + "(";
         String secondPartUpdate = " VALUES(";
-        try{
+        try(Connection connection = HikariCPDataSource.getConnection()){
             for (Field field : properties) {
                 if(!field.isAnnotationPresent(Id.class)) {
                     firstPartUpdate += columns.get(field) + ", ";
@@ -163,7 +162,7 @@ public class DAO implements DAOInterface{
             rs.close();
         }
         catch (Exception e){
-            System.out.println(e);
+            e.printStackTrace();
         }
         System.out.println(firstPartUpdate + secondPartUpdate);
     }
@@ -191,17 +190,6 @@ public class DAO implements DAOInterface{
         }
         catch(Exception e){
             e.printStackTrace();
-        }
-    }
-
-    public void close(){
-        try {
-            if (connection != null) {
-                connection.close();
-            }
-        }
-        catch(SQLException e){
-            System.out.println(e);
         }
     }
 }

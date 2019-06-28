@@ -23,7 +23,6 @@ public class RegisterController extends HttpServlet {
         User newUser = new User(req.getParameter("username"), req.getParameter("password"), req.getParameter("email"),
                 req.getParameter("firstName"), req.getParameter("lastName"), req.getParameter("occupation"));
         userDao.save(newUser);
-        userDao.close();
         resp.sendRedirect("/request_route.html");
     }
 

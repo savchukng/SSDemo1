@@ -21,7 +21,6 @@ public class DriversController extends HttpServlet {
             throws ServletException, IOException {
         UserDAO userDao = new UserDAO();
         req.setAttribute("drivers", userDao.getAllDrivers());
-        userDao.close();
         RequestDispatcher rd = req.getRequestDispatcher("drivers.jsp");
         rd.forward(req, resp);
     }

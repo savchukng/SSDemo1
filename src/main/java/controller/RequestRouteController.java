@@ -40,8 +40,6 @@ public class RequestRouteController extends HttpServlet {
         preferenceDAO.save(preference);
         app.setPreferenceId(preference.getId());
         applicationDao.newApplication(app);
-        preferenceDAO.close();
-        applicationDao.close();
         response.sendRedirect("index.html");
     }
 }

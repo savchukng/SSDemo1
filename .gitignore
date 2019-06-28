@@ -32,5 +32,3 @@ dependency-reduced-pom.xml
 *.iws
 .idea/
 
-# project
-src/main/resources/

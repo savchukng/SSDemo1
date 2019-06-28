@@ -95,7 +95,6 @@ public class User {
     public Vehicle getDriversVehicle(){
         DAO vehicleDAO = new DAO(Vehicle.class);
         Vehicle vehicle = (Vehicle) vehicleDAO.get("driver_id", id);
-        vehicleDAO.close();
         return vehicle;
     }
 }

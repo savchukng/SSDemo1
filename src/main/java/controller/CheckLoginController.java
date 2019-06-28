@@ -22,7 +22,6 @@ public class CheckLoginController extends HttpServlet {
             throws ServletException, IOException {
         DAO userDao = new DAO(User.class);
         User user = (User) userDao.get("username", req.getParameter("username"));
-        userDao.close();
         PrintWriter out = resp.getWriter();
         if(user == null || !user.getPassword().equals(req.getParameter("password"))){
             out.println("Wrong username or password");
