@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+		  	<div class="container">
+		    	<a class="navbar-brand" href="#">
+		        	<img src="http://placehold.it/150x50?text=Logo" alt="">
+		        </a>
+		    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+		          <span class="navbar-toggler-icon"></span>
+		        </button>
+			    <div class="collapse navbar-collapse" id="navbarResponsive">
+			      	<ul class="navbar-nav ml-auto" id="navbarResponsiveUL">
+			        	<li class="nav-item">
+			          		<a class="nav-link" href="index.html">Home</a>
+			        	</li>
+			        	<li class="nav-item">
+			          		<a class="nav-link" href="check-request-route">Request route</a>
+			        	</li>
+			        	<li class="nav-item active">
+			          		<a class="nav-link" href="#">Sign In</a>
+			        	</li>
+			        	<li class="nav-item">
+			          		<a class="nav-link" href="register.html">Sign Up</a>
+			        	</li>
+			      	</ul>
+			    </div>
+			</div>
+		</nav>
+        <main class="col" style="margin-top: 100px;">
+            <div class="col-md-4 offset-md-4">
+                <form class="text-center border border-light p-5" action="/check-login" method="post" onsubmit="login(this)">
+                    <p class="h4 mb-4">Sign In</p>
+                    <input type="text" name="username" id="defaultLoginFormLogin" class="form-control mb-4" placeholder="Login">
+                    <input type="password" name="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                <label class="custom-control-label" for="defaultLoginFormRemember">Remember me</label>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="">Forgot password?</a>
+                        </div>
+                    </div>
+                    <button class="btn btn-info btn-block my-4" type="submit">Sign In</button>
+                    <p>Not a member?
+                        <a href="">Register</a>
+                    </p>
+                </form>
+            </div>
+        </main>
+	</body>
+</html>
