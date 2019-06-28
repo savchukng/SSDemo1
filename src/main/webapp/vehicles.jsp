@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,16 +8,6 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<style>
-			.bs-example{
-				text-align: center;
-			}
-			#fixed-sidebar {
-			    position: fixed;
-			    max-width: 20%;
-			    color: black;
-			}
-		</style>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -52,13 +43,13 @@
 		                <div class="collapse navbar-collapse">
 		                    <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
 		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="routes.html">Routes</a>
+		                            <a class="nav-link pl-0" href="routes.jsp">Routes</a>
 		                        </li>
 		                        <li class="nav-item">
 		                            <a class="nav-link pl-0" href="drivers.jsp">Drivers</a>
 		                        </li>
 		                        <li class="nav-item active">
-		                            <a class="nav-link pl-0" href="vehicles.html">Vehicles</a>
+		                            <a class="nav-link pl-0" href="vehicles.jsp">Vehicles</a>
 		                        </li>
 		                        <li class="nav-item">
 		                            <a class="nav-link pl-0" href="applications.jsp">Applications</a>
@@ -81,87 +72,17 @@
 					    	</tr>
 					  	</thead>
 					  	<tbody>
-					    	<tr>
-					      		<th scope="row">1</th>
-					      		<td>make</td>
-					      		<td>model</td>
-					      		<td>0000</td>
-					      		<td>aa0000aa</td>
-					      		<td>1</td>
-					      		<td><a href="#">driver</a></td>
-					    	</tr>
-					    	<tr>
-					      		<th scope="row">1</th>
-					      		<td>make</td>
-					      		<td>model</td>
-					      		<td>0000</td>
-					      		<td>aa0000aa</td>
-					      		<td>1</td>
-					      		<td><a href="#">driver</a></td>
-					    	</tr>
-					    	<tr>
-					      		<th scope="row">1</th>
-					      		<td>make</td>
-					      		<td>model</td>
-					      		<td>0000</td>
-					      		<td>aa0000aa</td>
-					      		<td>1</td>
-					      		<td><a href="#">driver</a></td>
-					    	</tr>
-					    	<tr>
-					      		<th scope="row">1</th>
-					      		<td>make</td>
-					      		<td>model</td>
-					      		<td>0000</td>
-					      		<td>aa0000aa</td>
-					      		<td>1</td>
-					      		<td><a href="#">driver</a></td>
-					    	</tr>
-					    	<tr>
-					      		<th scope="row">1</th>
-					      		<td>make</td>
-					      		<td>model</td>
-					      		<td>0000</td>
-					      		<td>aa0000aa</td>
-					      		<td>1</td>
-					      		<td><a href="#">driver</a></td>
-					    	</tr>
-					    	<tr>
-					      		<th scope="row">1</th>
-					      		<td>make</td>
-					      		<td>model</td>
-					      		<td>0000</td>
-					      		<td>aa0000aa</td>
-					      		<td>1</td>
-					      		<td><a href="#">driver</a></td>
-					    	</tr>
-					    	<tr>
-					      		<th scope="row">1</th>
-					      		<td>make</td>
-					      		<td>model</td>
-					      		<td>0000</td>
-					      		<td>aa0000aa</td>
-					      		<td>1</td>
-					      		<td><a href="#">driver</a></td>
-					    	</tr>
-					    	<tr>
-					      		<th scope="row">1</th>
-					      		<td>make</td>
-					      		<td>model</td>
-					      		<td>0000</td>
-					      		<td>aa0000aa</td>
-					      		<td>1</td>
-					      		<td><a href="#">driver</a></td>
-					    	</tr>
-					    	<tr>
-					      		<th scope="row">1</th>
-					      		<td>make</td>
-					      		<td>model</td>
-					      		<td>0000</td>
-					      		<td>aa0000aa</td>
-					      		<td>1</td>
-					      		<td><a href="#">driver</a></td>
-					    	</tr>
+						<c:forEach items="${vehicles}" var="vehicle">
+							<tr>
+								<th scope="row"><c:out value="${vehicle.id}"/></th>
+								<td><c:out value="${vehicle.make}"/></td>
+								<td><c:out value="${vehicle.model}"/></td>
+								<td><c:out value="${vehicle.year}"/></td>
+								<td><c:out value="${vehicle.numberPlate}"/></td>
+								<td><c:out value="${vehicle.state}"/></td>
+								<td><c:out value="${vehicle.driverId}"/></td>
+							</tr>
+						</c:forEach>
 					  </tbody>
 					</table>
 			    </main>

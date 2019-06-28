@@ -12,7 +12,7 @@ public class Preference {
     @COLUMN("v_make")
     String vMake;
     @COLUMN("v_model")
-    String vModel;
+    String vModel = "Any";
     @COLUMN("v_year_from")
     int vYearFrom;
     @COLUMN("v_year_to")
@@ -54,8 +54,6 @@ public class Preference {
         if(vModel != null) {
             this.vModel = vModel;
         }
-        else
-            this.vModel = "Any";
     }
 
     public int getvYearFrom() {

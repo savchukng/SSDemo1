@@ -23,9 +23,7 @@ public class User {
     @COLUMN("user_type")
     protected String occupation;
 
-    public User(){
-
-    }
+    public User(){}
 
     public User(String username, String password, String email, String firstName, String lastName, String occupation) {
         this.username = username;

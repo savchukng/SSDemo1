@@ -33,19 +33,6 @@ public class Application {
     @COLUMN("preference_id")
     int preferenceId;
 
-    public Application(int driverId, Date registrationDate, Date receptionDate, Date completionDate, int userId, String origin, String destination, int dispatcherId, String additionalInfo, int preferenceId) {
-        this.driverId = driverId;
-        this.registrationDate = registrationDate;
-        this.receptionDate = receptionDate;
-        this.completionDate = completionDate;
-        this.userId = userId;
-        this.origin = origin;
-        this.destination = destination;
-        this.dispatcherId = dispatcherId;
-        this.additionalInfo = additionalInfo;
-        this.preferenceId = preferenceId;
-    }
-
     public Application(){}
 
     public int getId() {
