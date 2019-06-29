@@ -20,18 +20,12 @@
 		        </button>
 			    <div class="collapse navbar-collapse" id="navbarResponsive">
 			      	<ul class="navbar-nav ml-auto" id="navbarResponsiveUL">
-			        	<li class="nav-item">
-			          		<a class="nav-link" href="../index.html">Home</a>
-			        	</li>
-			        	<li class="nav-item">
-			          		<a class="nav-link" href="../user/request_route.html">Request route</a>
-			        	</li>
-			        	<li class="nav-item">
-			          		<a class="nav-link" href="../login.html">Sign In</a>
-			        	</li>
-			        	<li class="nav-item">
-			          		<a class="nav-link" href="../register.html">Sign Up</a>
-			        	</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/profile">Profile</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="/sign-out">Sign Out</a>
+						</li>
 			      	</ul>
 			    </div>
 			</div>
@@ -42,18 +36,21 @@
 		            <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start">
 		                <div class="collapse navbar-collapse">
 		                    <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
-		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="routes.jsp">Routes</a>
-		                        </li>
-		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="drivers.jsp">Drivers</a>
-		                        </li>
-		                        <li class="nav-item active">
-		                            <a class="nav-link pl-0" href="vehicles.jsp">Vehicles</a>
-		                        </li>
-		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="applications.jsp">Applications</a>
-		                        </li>
+								<li class="nav-item">
+									<a class="nav-link pl-0" href="routes">Routes</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link pl-0" href="drivers">Drivers</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link pl-0" href="vehicles">Vehicles</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link pl-0" href="applications">Applications</a>
+								</li>
+								<li class="nav-item active">
+									<a class="nav-link pl-0" href="clients">Clients</a>
+								</li>
 		                    </ul>
 		                </div>
 		            </nav>
@@ -63,24 +60,20 @@
 						<thead class="thead-light">
 					  		<tr>
 					      		<th scope="col">ID</th>
-					    		<th scope="col">Make</th>
-					    		<th scope="col">Model</th>
-					    		<th scope="col">Year</th>
-					    		<th scope="col">Number Plate</th>
-					      		<th scope="col">State</th>
-					      		<th scope="col">Current driver</th>
+					    		<th scope="col">Username</th>
+					    		<th scope="col">First name</th>
+					      		<th scope="col">Last name</th>
+								<th scope="col">Email</th>
 					    	</tr>
 					  	</thead>
 					  	<tbody>
-						<c:forEach items="${vehicles}" var="vehicle">
+						<c:forEach items="${clients}" var="client">
 							<tr>
-								<th scope="row"><c:out value="${vehicle.id}"/></th>
-								<td><c:out value="${vehicle.make}"/></td>
-								<td><c:out value="${vehicle.model}"/></td>
-								<td><c:out value="${vehicle.year}"/></td>
-								<td><c:out value="${vehicle.numberPlate}"/></td>
-								<td><c:out value="${vehicle.state}"/></td>
-								<td><c:out value="${vehicle.driverId}"/></td>
+								<th scope="row"><c:out value="${client.id}"/></th>
+								<td><c:out value="${client.username}"/></td>
+								<td><c:out value="${client.firstName}"/></td>
+								<td><c:out value="${client.lastName}"/></td>
+								<td><c:out value="${client.email}"/></td>
 							</tr>
 						</c:forEach>
 					  </tbody>

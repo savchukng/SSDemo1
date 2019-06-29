@@ -1,7 +1,7 @@
 package controller;
 
 import dao.ApplicationDAO;
-import dao.DAO;
+import dao.DAOImpl;
 import model.Application;
 import model.Preference;
 import model.User;
@@ -26,7 +26,7 @@ public class RequestRouteController extends HttpServlet {
         app.setOrigin(request.getParameter("origin"));
         app.setDestination(request.getParameter("destination"));
         app.setAdditionalInfo(request.getParameter("additionalInfo"));
-        DAO preferenceDAO = new DAO(Preference.class);
+        DAOImpl preferenceDAO = new DAOImpl(Preference.class);
         Preference preference = new Preference();
         preference.setvMake(request.getParameter("make"));
         preference.setvModel(request.getParameter("model"));

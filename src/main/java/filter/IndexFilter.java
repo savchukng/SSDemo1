@@ -30,8 +30,12 @@ public class IndexFilter extends HttpFilter {
         else if (user.getUserType().equals("dispatcher")){
             res.sendRedirect("applications");
         }
+        else if (user.getUserType().equals("driver")){
+            res.sendRedirect("routes");
+        }
         else {
-            res.sendRedirect("applications");
+            PrintWriter out = res.getWriter();
+            out.println("Something went wrong");
         }
     }
 

@@ -13,24 +13,29 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebFilter(urlPatterns = {
-        "/user/*",
-        "/request-route"
+        "/profile"
 })
-public class UserFilter extends HttpFilter {
+public class ProfileFilter extends HttpFilter {
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         if(user == null){
-            res.sendRedirect("/login.html");
+            res.sendRedirect("login.html");
         }
-        else if (!user.getUserType().equals("client")) {
-            PrintWriter out = res.getWriter();
-            out.println("You don't have permission to do this");
+        else if (user.getUserType().equals("client")){
+            res.sendRedirect("user/profile.jsp");
+        }
+        else if (user.getUserType().equals("dispatcher")){
+            res.sendRedirect("dispatcher/profile.jsp");
+        }
+        else if (user.getUserType().equals("driver")){
+            res.sendRedirect("driver/profile.jsp");
         }
         else {
-            chain.doFilter(req, res);
+            PrintWriter out = res.getWriter();
+            out.println("Something went wrong");
         }
     }
 

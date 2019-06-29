@@ -3,7 +3,7 @@ package model;
 import annotation.COLUMN;
 import annotation.Id;
 import annotation.TABLE;
-import dao.DAO;
+import dao.DAOImpl;
 
 @TABLE("users")
 public class User {
@@ -91,7 +91,7 @@ public class User {
     }
 
     public Vehicle getDriversVehicle(){
-        DAO vehicleDAO = new DAO(Vehicle.class);
+        DAOImpl vehicleDAO = new DAOImpl(Vehicle.class);
         Vehicle vehicle = (Vehicle) vehicleDAO.get("driver_id", id);
         return vehicle;
     }

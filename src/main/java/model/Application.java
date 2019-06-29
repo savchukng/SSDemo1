@@ -3,8 +3,9 @@ package model;
 import annotation.COLUMN;
 import annotation.Id;
 import annotation.TABLE;
-import dao.DAO;
+import dao.DAOImpl;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @TABLE("applications")
@@ -33,6 +34,8 @@ public class Application {
     @COLUMN("preference_id")
     int preferenceId;
 
+    static final SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+
     public Application(){}
 
     public int getId() {
@@ -51,24 +54,30 @@ public class Application {
         this.driverId = driverId;
     }
 
-    public Date getRegistrationDate() {
-        return registrationDate;
+    public String getRegistrationDate() {
+        return formatter.format(registrationDate);
     }
 
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
 
-    public Date getReceptionDate() {
-        return receptionDate;
+    public String getReceptionDate() {
+        if(receptionDate != null) {
+            return formatter.format(receptionDate);
+        }
+        return null;
     }
 
     public void setReceptionDate(Date receptionDate) {
         this.receptionDate = receptionDate;
     }
 
-    public Date getCompletionDate() {
-        return completionDate;
+    public String getCompletionDate() {
+        if(completionDate != null) {
+            return formatter.format(completionDate);
+        }
+        return null;
     }
 
     public void setCompletionDate(Date completionDate) {
@@ -97,10 +106,25 @@ public class Application {
 
     public Preference getPreference(){
         if(preferenceId > 0) {
-            DAO prefDAO = new DAO(Preference.class);
+            DAOImpl prefDAO = new DAOImpl(Preference.class);
             return (Preference) prefDAO.get(preferenceId);
         }
         return null;
+    }
+
+    public Route getRoute(){
+        DAOImpl routeDao = new DAOImpl(Route.class);
+        return (Route) routeDao.get("app_id", id);
+    }
+
+    public String getStatus(){
+        if(receptionDate == null){
+            return "New";
+        }
+        else if(completionDate == null){
+            return "In progress";
+        }
+        return "Completed";
     }
 
     public void setDestination(String destination) {

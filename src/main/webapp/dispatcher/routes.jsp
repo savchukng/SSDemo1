@@ -36,7 +36,7 @@
 		            <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start">
 		                <div class="collapse navbar-collapse">
 		                    <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
-                                <li class="nav-item">
+                                <li class="nav-item active">
                                     <a class="nav-link pl-0" href="routes">Routes</a>
                                 </li>
                                 <li class="nav-item">
@@ -45,9 +45,12 @@
                                 <li class="nav-item">
                                     <a class="nav-link pl-0" href="vehicles">Vehicles</a>
                                 </li>
-                                <li class="nav-item active">
+                                <li class="nav-item">
                                     <a class="nav-link pl-0" href="applications">Applications</a>
                                 </li>
+								<li class="nav-item">
+									<a class="nav-link pl-0" href="clients">Clients</a>
+								</li>
 		                    </ul>
 		                </div>
 		            </nav>

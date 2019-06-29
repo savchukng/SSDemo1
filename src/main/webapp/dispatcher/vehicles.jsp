@@ -42,12 +42,15 @@
                                 <li class="nav-item">
                                     <a class="nav-link pl-0" href="drivers">Drivers</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item active">
                                     <a class="nav-link pl-0" href="vehicles">Vehicles</a>
                                 </li>
-                                <li class="nav-item active">
+                                <li class="nav-item">
                                     <a class="nav-link pl-0" href="applications">Applications</a>
                                 </li>
+								<li class="nav-item">
+									<a class="nav-link pl-0" href="clients">Clients</a>
+								</li>
 		                    </ul>
 		                </div>
 		            </nav>

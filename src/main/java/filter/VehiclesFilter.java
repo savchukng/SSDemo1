@@ -1,6 +1,8 @@
 package filter;
 
+import dao.DAOImpl;
 import model.User;
+import model.Vehicle;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -12,25 +14,25 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebFilter(urlPatterns = {
-        "/admin/*"
+@WebFilter(filterName = "VehiclesFilter", urlPatterns = {
+        "/vehicles"
 })
-public class AdminFilter extends HttpFilter {
-
+public class VehiclesFilter extends HttpFilter {
     @Override
-    protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
+    public void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         if(user == null){
-            res.sendRedirect("/login.html");
+            req.getRequestDispatcher("login.html").forward(req, res);
         }
-        else if (!user.getUserType().equals("admin")) {
+        else if (user.getUserType().equals("client") || user.getUserType().equals("driver")){
             PrintWriter out = res.getWriter();
             out.println("You don't have permission to do this");
         }
         else {
-            chain.doFilter(req, res);
+            DAOImpl vehicleDao = new DAOImpl(Vehicle.class);
+            req.setAttribute("vehicles", vehicleDao.getAll());
+            req.getRequestDispatcher("dispatcher/vehicles.jsp").forward(req, res);
         }
     }
-
 }

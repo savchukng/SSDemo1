@@ -1,7 +1,7 @@
 
 package controller;
 
-import dao.DAO;
+import dao.DAOImpl;
 import model.User;
 
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        DAO userDao = new DAO(User.class);
+        DAOImpl userDao = new DAOImpl(User.class);
         User newUser = new User(req.getParameter("username"), req.getParameter("password"), req.getParameter("email"),
                 req.getParameter("firstName"), req.getParameter("lastName"), req.getParameter("occupation"));
         userDao.save(newUser);

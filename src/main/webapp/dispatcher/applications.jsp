@@ -12,7 +12,7 @@
 		<script>
 			function setAppNum(num) {
                 document.getElementById("appId").value = num;
-				$("#setDriverHeader").text("Set driver for application (id " + num + ")");
+				$("#setDriverHeader").text("Set driver for application #" + num);
             }
 		</script>
 	</head>
@@ -55,6 +55,9 @@
 		                        <li class="nav-item active">
 		                            <a class="nav-link pl-0" href="applications">Applications</a>
 		                        </li>
+								<li class="nav-item">
+									<a class="nav-link pl-0" href="clients">Clients</a>
+								</li>
 		                    </ul>
 		                </div>
 		            </nav>
@@ -80,7 +83,7 @@
                         <c:forEach items="${apps}" var="app">
                             <tr>
                                 <th scope="row"><c:out value="${app.id}"/></th>
-                                <td>new</td>
+                                <td><c:out value="${app.status}"/></td>
                                 <td><c:out value="${app.registrationDate}"/></td>
                                 <td><c:out value="${app.receptionDate}"/></td>
                                 <td><c:out value="${app.completionDate}"/></td>
@@ -89,11 +92,16 @@
                                 <td><c:out value="${app.preference.vMake} ${app.preference.vModel}"/></td>
                                 <td><a href="#"><c:out value="${app.driverId}"/></a></td>
                                 <td><a href="#"><c:out value="${app.userId}"/></a></td>
-								 <td><button class="btn btn-primary" data-toggle="modal" data-target="#driver-modal" onclick="setAppNum(<c:out value="${app.id}"/>)">Set driver</button></td>
+								 <td>
+									 <button class="btn btn-primary" data-toggle="modal" data-target="#driver-modal" onclick="setAppNum(<c:out value="${app.id}"/>)">Set driver</button>
+									 <button class="btn btn-primary" onclick="location.href='/delete-application?id=<c:out value="${app.id}"/>'">
+										 Delete
+									 </button>
+								 </td>
 								 <div class="modal fade" id="driver-modal">
 									<div class="modal-dialog">
 										<div class="modal-content">
-											<form action="/set-driver">
+											<form action="/set-driver" method="post">
 												<div class="modal-header">
 													<h3 id="setDriverHeader"></h3>
 												</div>
