@@ -3,6 +3,7 @@ package model;
 import annotation.COLUMN;
 import annotation.Id;
 import annotation.TABLE;
+import dao.ApplicationDAO;
 
 @TABLE("routes")
 public class Route {
@@ -54,6 +55,11 @@ public class Route {
 
     public int getAppId() {
         return appId;
+    }
+
+    public Object getApp(){
+        ApplicationDAO applicationDAO = new ApplicationDAO();
+        return applicationDAO.get(appId);
     }
 
     public void setAppId(int appId) {

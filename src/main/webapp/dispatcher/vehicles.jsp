@@ -77,7 +77,7 @@
 								<td><c:out value="${vehicle.year}"/></td>
 								<td><c:out value="${vehicle.numberPlate}"/></td>
 								<td><c:out value="${vehicle.state}"/></td>
-								<td><c:out value="${vehicle.driverId}"/></td>
+								<td><c:out value="${vehicle.driver}"/></td>
 							</tr>
 						</c:forEach>
 					  </tbody>

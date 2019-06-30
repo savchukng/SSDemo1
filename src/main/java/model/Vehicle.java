@@ -3,6 +3,7 @@ package model;
 import annotation.COLUMN;
 import annotation.Id;
 import annotation.TABLE;
+import dao.UserDAO;
 
 @TABLE("vehicles")
 public class Vehicle {
@@ -80,9 +81,14 @@ public class Vehicle {
         this.numberPlate = numberPlate;
     }
 
+    public Object getDriver() {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.get(driverId);
+    }
+
     @Override
     public String toString() {
         return make + " " + model + " " + year + ", State: " +
-                state + " " + numberPlate + ", ID:" + id;
+                state + ", " + numberPlate + " (ID:" + id + ")";
     }
 }

@@ -56,12 +56,18 @@
 		                            <a class="nav-link pl-0" href="applications">Applications</a>
 		                        </li>
 								<li class="nav-item">
-									<a class="nav-link pl-0" href="clients">Clients</a>
+									<a class="nav-link pl-0" href="clients  ">Clients</a>
 								</li>
 		                    </ul>
 		                </div>
 		            </nav>
 		        </aside>
+				<div>
+					<a href="/applications">All</a>
+					<a href="/applications?status=New">New</a>
+					<a href="/applications?status=In progress">In progress</a>
+					<a href="/applications?status=Completed">Completed</a>
+				</div>
 		        <main class="col" style="min-height: 630px;">
 		        	<table class="table table-hover" style="margin:2%">
 						<thead class="thead-light">
@@ -89,9 +95,9 @@
                                 <td><c:out value="${app.completionDate}"/></td>
                                 <td><c:out value="${app.origin}"/></td>
                                 <td><c:out value="${app.destination}"/></td>
-                                <td><c:out value="${app.preference.vMake} ${app.preference.vModel}"/></td>
-                                <td><a href="#"><c:out value="${app.driverId}"/></a></td>
-                                <td><a href="#"><c:out value="${app.userId}"/></a></td>
+                                <td><c:out value="${app.preference}"/></td>
+                                <td><a href="#"><c:out value="${app.driver}"/></a></td>
+                                <td><a href="#"><c:out value="${app.user}"/></a></td>
 								 <td>
 									 <button class="btn btn-primary" data-toggle="modal" data-target="#driver-modal" onclick="setAppNum(<c:out value="${app.id}"/>)">Set driver</button>
 									 <button class="btn btn-primary" onclick="location.href='/delete-application?id=<c:out value="${app.id}"/>'">

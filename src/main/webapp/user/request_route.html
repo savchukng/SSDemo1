@@ -6,7 +6,27 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+		<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script>
+			function searchByNumber() {
+				$.ajax({
+					url: "/search-by-number?numberPlate=" + $("#number-plate").val(),
+					success: function (data) {
+						$("#make").val(data["make"]);
+						$("#model").val(data["model"]);
+						$("#year-from").val(data["year"]);
+						$("#year-to").val(data["year"]);
+						$("#state-from").val(data["state"]);
+						$("#state-to").val(data["state"]);
+					},
+					error: function () {
+						Swal.fire("Vehicle with such number plate is not found");
+					}
+				})
+			}
+		</script>
 	</head>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
             <div class="container">
@@ -56,27 +76,18 @@
 						<div class="col-sm-4">
 							<input type="text" name="numberPlate" class="form-control" id="number-plate" placeholder="Enter number plate">
 						</div>
+						<button onclick="searchByNumber()" type="button" class="btn btn-primary">Search</button>
 					</div>
 					<div class="form-group row">
 						<label for="make" class="col-form-label col-sm-1">Make:</label>
 						<div class="col-sm-4">
-							<select class="form-control" id="make" name="make">
-								<option>Audi</option>
-								<option>Volvo</option>
-								<option>KIA</option>
-								<option>Chrysler</option>
-							</select>
+							<input type="text" class="form-control" id="make" name="make">
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="model" class="col-form-label col-sm-1">Model:</label>
 						<div class="col-sm-4">
-							<select class="form-control" id="model" name="model">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-							</select>
+							<input type="text" class="form-control" id="model" name="model">
 						</div>
 					</div>
 					<div class="form-group row">
@@ -101,7 +112,7 @@
 							</select>
 						</div>
 						<div class="col-sm-2">
-							<select class="form-control" name="stateTo">
+							<select class="form-control" id="state-to" name="stateTo">
 								<option value="" disabled selected>To</option>
 								<option>1</option>
 								<option>2</option>

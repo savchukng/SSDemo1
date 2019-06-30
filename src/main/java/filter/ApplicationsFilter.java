@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebFilter(filterName = "ApplicationsFilter", urlPatterns = {
@@ -38,7 +39,19 @@ public class ApplicationsFilter extends HttpFilter {
         else {
             ApplicationDAO appDao = new ApplicationDAO();
             List<Object> apps = appDao.getAll();
-            req.setAttribute("apps", apps);
+            if(req.getParameter("status") != null){
+                List<Application> statusApps = new ArrayList<>();
+                for(Object objApp : apps){
+                    Application app = (Application) objApp;
+                    if(app.getStatus().equals(req.getParameter("status"))){
+                        statusApps.add(app);
+                    }
+                }
+                req.setAttribute("apps", statusApps);
+            }
+            else {
+                req.setAttribute("apps", apps);
+            }
             req.getRequestDispatcher("dispatcher/applications.jsp").forward(req, res);
         }
     }

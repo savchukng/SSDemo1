@@ -8,16 +8,12 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<style>
-			.bs-example{
-				text-align: center;
+		<script>
+			function setDriverNum(num) {
+				document.getElementById("driverId").value = num;
+				$("#setDriverHeader").text("Set vehicle for driver #" + num);
 			}
-			#fixed-sidebar {
-			    position: fixed;
-			    max-width: 20%;
-			    color: black;
-			}
-		</style>
+		</script>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -72,7 +68,9 @@
 					      		<th scope="col">ID</th>
 					    		<th scope="col">First Name</th>
 					    		<th scope="col">Last Name</th>
+								<th scope="col">Current Route</th>
 					      		<th scope="col">Vehicle</th>
+								<th scope="col"></th>
 					    	</tr>
 					  	</thead>
 					  	<tbody>
@@ -81,8 +79,32 @@
 								<th scope="row"><c:out value="${driver.id}"/></th>
 								<td><c:out value="${driver.firstName}"/></td>
 								<td><c:out value="${driver.lastName}"/></td>
-								<td><a href="#"><c:out value="${driver.driversVehicle}"/></a></td>
+								<td><c:out value="${driver.driversRoute}"/></td>
+								<td><c:out value="${driver.driversVehicle}"/></td>
+								<td>
+									<button class="btn btn-primary" data-toggle="modal" data-target="#driver-modal" onclick="setDriverNum(<c:out value="${driver.id}"/>)">Set vehicle</button>
+								</td>
 							</tr>
+							<div class="modal fade" id="driver-modal">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<form action="/set-vehicle" method="post">
+											<div class="modal-header">
+												<h3 id="setDriverHeader"></h3>
+											</div>
+											<div class="modal-body">
+												<input id="driverId" type="hidden" value="" name="driverId">
+												<label for="driver-id" class="col-form-label">Vehicle id:</label>
+												<input type="text" class="form-control" name="vehicleId" id="driver-id">
+											</div>
+											<div class="modal-footer">
+												<input class="btn btn-default" type="submit" value="Set">
+												<button class="btn btn-cancel" data-dismiss="modal">Cancel</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
 						</c:forEach>
 					  </tbody>
 					</table>

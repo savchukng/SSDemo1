@@ -50,7 +50,10 @@
 						<td><c:out value="${route.origin}"/></td>
 						<td><c:out value="${route.destination}"/></td>
 						<td><c:out value="${route.currentLocation}"/></td>
-						<td><button class="btn btn-primary" data-toggle="modal" data-target="#driver-modal">Set current location</button></td>
+						<td>
+							<button class="btn btn-primary" data-toggle="modal" data-target="#driver-modal">Set current location</button>
+							<button class="btn btn-primary" onclick="location.href='/complete-route?routeId=<c:out value="${route.id}"/>'">Set completed</button>
+						</td>
 						<div class="modal fade" id="driver-modal">
 							<div class="modal-dialog">
 								<div class="modal-content">

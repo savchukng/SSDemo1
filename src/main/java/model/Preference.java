@@ -10,17 +10,17 @@ public class Preference {
     @COLUMN("id")
     int id;
     @COLUMN("v_make")
-    String vMake;
+    String vMake = "Any make";
     @COLUMN("v_model")
-    String vModel = "Any";
+    String vModel = "Any model";
     @COLUMN("v_year_from")
-    int vYearFrom;
+    int vYearFrom = 1980;
     @COLUMN("v_year_to")
-    int vYearTo;
+    int vYearTo = 2019;
     @COLUMN("v_state_from")
-    int vStateFrom;
+    int vStateFrom = 1;
     @COLUMN("v_state_to")
-    int vStateTo;
+    int vStateTo = 5;
     @COLUMN("v_number_plate")
     String vNumberPlate;
 
@@ -106,6 +106,11 @@ public class Preference {
         else {
             this.vStateFrom = vStateTo;
         }
+    }
+
+    @Override
+    public String toString() {
+        return vMake + " " + vModel + "(" + vYearFrom + "-" + vYearTo + ") State: " + vStateFrom + "-" + vStateTo + " " + vNumberPlate;
     }
 
     public String getvNumberPlate() {

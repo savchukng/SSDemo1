@@ -1,6 +1,5 @@
-<%@ page import="model.User" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% User user = (User) request.getSession().getAttribute("user"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,8 +37,16 @@
                 </div>
             </div>
         </nav>
-        <main class="col " style="height: 630px;">
-            <h1>Name <%= user.getFirstName() %></h1>
+        <main class="col" style="height: 630px;">
+            <div class="col-md-12 offset-md-4">
+                <h1>Profile</h1>
+                <h1><c:out value="${user.firstName}"/> <c:out value="${user.lastName}"/></h1>
+                <h2 style="color: mediumslateblue"><c:out value="${user.userType}"/></h2>
+                <h3>Username: <c:out value="${user.username}"/></h3>
+                <h3>Email: <c:out value="${user.email}"/></h3>
+                <button class="btn btn-primary" onclick="location.href='change-email.html'">Change email</button>
+                <button class="btn btn-primary" onclick="location.href='change-password.html'">Change password</button>
+            </div>
         </main>
     </body>
 </html>

@@ -37,7 +37,7 @@
         <main class="col " style="height: 630px;">
             <h1>Name <c:out value="${user.username}"/></h1>
             <h1>Your current vehicle: <c:out value="${user.driversVehicle}"/></h1>
-            <button class="btn btn-primary" data-toggle="modal" data-target="#set-state-modal">Set driver</button>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#set-state-modal">Set state</button>
             <div class="modal fade" id="set-state-modal">
                 <div class="modal-dialog">
                     <div class="modal-content">

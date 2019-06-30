@@ -121,7 +121,7 @@ public class DAOImpl implements DAO {
             parseResult(newObject, rs);
         }
         catch(Exception e){
-            e.printStackTrace();
+            System.out.println(e);
         }
         return newObject;
     }

@@ -1,5 +1,7 @@
 package filter;
 
+import dao.DAOImpl;
+import dao.UserDAO;
 import model.User;
 
 import javax.servlet.FilterChain;
@@ -21,6 +23,8 @@ public class ProfileFilter extends HttpFilter {
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
+        DAOImpl userDAO = new DAOImpl(User.class);
+        session.setAttribute("user", (User)userDAO.get(user.getId()));
         if(user == null){
             res.sendRedirect("login.html");
         }

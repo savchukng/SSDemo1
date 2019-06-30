@@ -63,7 +63,7 @@
 					    		<th scope="col">Origin</th>
 					    		<th scope="col">Destination</th>
 								<th scope="col">Current Location</th>
-					      		<th scope="col">Application</th>
+					      		<th scope="col">Application ID</th>
 					    	</tr>
 					  	</thead>
 					  	<tbody>
@@ -73,7 +73,7 @@
                                     <td><c:out value="${route.origin}"/></td>
                                     <td><c:out value="${route.destination}"/></td>
                                     <td><c:out value="${route.currentLocation}"/></td>
-                                    <td><a href="#"><c:out value="${route.appId}"/></a></td>
+                                    <td><c:out value="${route.appId}"/></td>
                                 </tr>
                             </c:forEach>
 					  </tbody>

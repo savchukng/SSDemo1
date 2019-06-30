@@ -43,6 +43,19 @@ public class ApplicationDAO extends DAOImpl {
         }
     }
 
+    public void setCompletionDate(int id, Date date){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String strDate = formatter.format(date);
+        try(Connection connection = HikariCPDataSource.getConnection();
+            Statement stmt = connection.createStatement()){
+            String query = "UPDATE applications SET completion_date='" + strDate + "' WHERE id=" + id;
+            stmt.executeUpdate(query);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public void setDriverId(int appId, int driverId){
         String query = "UPDATE applications " +
                 "SET driver_id=" + driverId + " WHERE id=" + appId;

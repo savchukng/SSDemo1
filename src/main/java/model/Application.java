@@ -4,6 +4,7 @@ import annotation.COLUMN;
 import annotation.Id;
 import annotation.TABLE;
 import dao.DAOImpl;
+import dao.UserDAO;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -80,6 +81,16 @@ public class Application {
         return null;
     }
 
+    public Object getDriver() {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.get(driverId);
+    }
+
+    public Object getUser() {
+        UserDAO userDAO = new UserDAO();
+        return userDAO.get(userId);
+    }
+
     public void setCompletionDate(Date completionDate) {
         this.completionDate = completionDate;
     }
@@ -153,5 +164,10 @@ public class Application {
 
     public void setPreferenceId(int preferenceId) {
         this.preferenceId = preferenceId;
+    }
+
+    @Override
+    public String toString() {
+        return origin + " -> " + destination + " (ID: " + id + ")";
     }
 }

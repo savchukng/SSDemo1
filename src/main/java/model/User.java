@@ -3,6 +3,7 @@ package model;
 import annotation.COLUMN;
 import annotation.Id;
 import annotation.TABLE;
+import dao.ApplicationDAO;
 import dao.DAOImpl;
 
 @TABLE("users")
@@ -94,6 +95,17 @@ public class User {
         DAOImpl vehicleDAO = new DAOImpl(Vehicle.class);
         Vehicle vehicle = (Vehicle) vehicleDAO.get("driver_id", id);
         return vehicle;
+    }
+
+    public Route getDriversRoute(){
+        ApplicationDAO applicationDAO = new ApplicationDAO();
+        Route route = applicationDAO.getDriverRoute(id);
+        return route;
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + " (ID: " + id + ")";
     }
 }
 

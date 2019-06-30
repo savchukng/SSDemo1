@@ -23,4 +23,15 @@ public class RouteDAO extends DAOImpl {
             e.printStackTrace();
         }
     }
+
+    public void deleteRoute(int routeId){
+        String query = "DELETE FROM routes WHERE id=" + routeId;
+        try(Connection connection = HikariCPDataSource.getConnection();
+            Statement stmt = connection.createStatement()){
+            stmt.executeUpdate(query);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
 }
