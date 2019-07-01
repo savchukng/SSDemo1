@@ -25,7 +25,7 @@ public class IndexFilter extends HttpFilter {
             res.sendRedirect("login.html");
         }
         else if (user.getUserType().equals("client")){
-            res.sendRedirect("user/request_route.html");
+            res.sendRedirect("/user/request_route.html");
         }
         else if (user.getUserType().equals("dispatcher")){
             res.sendRedirect("applications");

@@ -6,14 +6,35 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+		<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+		<script scr="/script/script.js"></script>
+		<link rel = "stylesheet" type = "text/css" href = "/style/style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script>
+			function login() {
+				$.ajax({
+					url: "/login",
+					type: "POST",
+					data: "username=" + $("#username").val() + "&password=" + $("#password").val(),
+					success: function (data) {
+						if (data["error"]) {
+							Swal.fire(data["error"]);
+						}
+						else {
+							location.href="/index.html";
+						}
+					},
+				})
+			}
+		</script>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 		  	<div class="container">
-		    	<a class="navbar-brand" href="#">
-		        	<img src="http://placehold.it/150x50?text=Logo" alt="">
-		        </a>
+				<a class="navbar-brand" href="/index.html">
+					<img src="/image/logo.png" width="20%" alt="logo">
+				</a>
 		    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		          <span class="navbar-toggler-icon"></span>
 		        </button>
@@ -31,10 +52,10 @@
 		</nav>
         <main class="col" style="margin-top: 100px;">
             <div class="col-md-4 offset-md-4">
-                <form class="text-center border border-light p-5" action="/login" method="post" onsubmit="login(this)">
+                <div class="text-center border border-light p-5">
                     <p class="h4 mb-4">Sign In</p>
-                    <input type="text" name="username" id="defaultLoginFormLogin" class="form-control mb-4" placeholder="Login">
-                    <input type="password" name="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+                    <input type="text" id="username" name="username" id="defaultLoginFormLogin" class="form-control mb-4" placeholder="Login">
+                    <input type="password" id="password" name="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
                     <div class="d-flex justify-content-around">
                         <div>
                             <div class="custom-control custom-checkbox">
@@ -46,11 +67,11 @@
                             <a href="">Forgot password?</a>
                         </div>
                     </div>
-                    <button class="btn btn-info btn-block my-4" type="submit">Sign In</button>
+                    <button class="btn btn-info btn-block my-4" type="button" onclick="login()">Sign In</button>
                     <p>Not a member?
-                        <a href="">Register</a>
+                        <a href="register.html">Register</a>
                     </p>
-                </form>
+                </div>
             </div>
         </main>
 	</body>

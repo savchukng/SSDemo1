@@ -75,11 +75,13 @@ public class DAOImpl implements DAO {
         Object newObject = null;
         try(Connection connection = HikariCPDataSource.getConnection();
             PreparedStatement stmt = connection.prepareStatement("SELECT * FROM " + table + " WHERE id = ?;")){
-            Constructor constructor = clss.getDeclaredConstructor();
-            newObject = constructor.newInstance();
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
-            rs.next();
+            if(!rs.next()){
+                throw new DAOException("No such record", null);
+            }
+            Constructor constructor = clss.getDeclaredConstructor();
+            newObject = constructor.newInstance();
             parseResult(newObject, rs);
         }
         catch (Exception e){

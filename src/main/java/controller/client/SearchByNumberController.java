@@ -1,4 +1,4 @@
-package controller;
+package controller.client;
 
 import com.google.gson.Gson;
 import dao.DAOImpl;

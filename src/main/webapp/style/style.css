@@ -1,0 +1,10 @@
+body {
+    background-image: url("https://backgrounddownload.com/wp-content/uploads/2018/09/background-images-for-website-2.jpg");
+}
+
+.profile {
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: 20px;
+    background-color:rgba(105, 171, 251, 0.2);
+}

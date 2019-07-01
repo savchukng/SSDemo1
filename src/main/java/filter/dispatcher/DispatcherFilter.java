@@ -1,4 +1,4 @@
-package filter;
+package filter.dispatcher;
 
 import model.User;
 
@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebFilter(urlPatterns = {
-        "/driver/*"
+        "/dispatcher/*"
 })
-public class DriverFilter extends HttpFilter {
+public class DispatcherFilter extends HttpFilter {
 
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
@@ -24,7 +24,7 @@ public class DriverFilter extends HttpFilter {
         if(user == null){
             res.sendRedirect("/login.html");
         }
-        else if (!user.getUserType().equals("driver")) {
+        else if (!user.getUserType().equals("dispatcher")) {
             PrintWriter out = res.getWriter();
             out.println("You don't have permission to do this");
         }

@@ -62,6 +62,11 @@ public class Route {
         return applicationDAO.get(appId);
     }
 
+    @Override
+    public String toString() {
+        return origin + "->" + destination + " ID(" + id + ")";
+    }
+
     public void setAppId(int appId) {
         this.appId = appId;
     }

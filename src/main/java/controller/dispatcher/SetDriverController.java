@@ -1,4 +1,4 @@
-package controller;
+package controller.dispatcher;
 
 import dao.ApplicationDAO;
 import model.Application;

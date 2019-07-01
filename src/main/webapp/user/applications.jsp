@@ -8,6 +8,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+		<script scr="/script/script.js"></script>
+		<link rel = "stylesheet" type = "text/css" href = "/style/style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script>
 			function setAppNum(num) {
@@ -19,16 +21,16 @@
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 		  	<div class="container">
-		    	<a class="navbar-brand" href="#">
-		        	<img src="http://placehold.it/150x50?text=Logo" alt="">
-		        </a>
+				<a class="navbar-brand" href="/index.html">
+					<img src="/image/logo.png" width="20%" alt="logo">
+				</a>
 		    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		          <span class="navbar-toggler-icon"></span>
 		        </button>
 			    <div class="collapse navbar-collapse" id="navbarResponsive">
 			      	<ul class="navbar-nav ml-auto" id="navbarResponsiveUL">
 						<li class="nav-item">
-							<a class="nav-link" href="request_route.html">Request route</a>
+							<a class="nav-link" href="/user/request_route.html">Request route</a>
 						</li>
 						<li class="nav-item active">
 							<a class="nav-link" href="/applications">My applications</a>

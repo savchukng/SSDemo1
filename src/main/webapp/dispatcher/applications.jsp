@@ -8,20 +8,22 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script scr="/script/script.js"></script>
+		<link rel = "stylesheet" type = "text/css" href = "/style/style.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script>
 			function setAppNum(num) {
-                document.getElementById("appId").value = num;
+				document.getElementById("appId").value = num;
 				$("#setDriverHeader").text("Set driver for application #" + num);
-            }
+			}
 		</script>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
 		  	<div class="container">
-		    	<a class="navbar-brand" href="#">
-		        	<img src="http://placehold.it/150x50?text=Logo" alt="">
-		        </a>
+				<a class="navbar-brand" href="/index.html">
+					<img src="/image/logo.png" width="20%" alt="logo">
+				</a>
 		    	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 		          <span class="navbar-toggler-icon"></span>
 		        </button>
@@ -44,31 +46,41 @@
 		                <div class="collapse navbar-collapse">
 		                    <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
 		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="routes">Routes</a>
+		                            <a class="nav-link pl-0" href="/routes">Routes</a>
 		                        </li>
 		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="drivers">Drivers</a>
+		                            <a class="nav-link pl-0" href="/drivers">Drivers</a>
 		                        </li>
 		                        <li class="nav-item">
-		                            <a class="nav-link pl-0" href="vehicles">Vehicles</a>
+		                            <a class="nav-link pl-0" href="/vehicles">Vehicles</a>
 		                        </li>
 		                        <li class="nav-item active">
-		                            <a class="nav-link pl-0" href="applications">Applications</a>
+		                            <a class="nav-link pl-0" href="/applications">Applications</a>
 		                        </li>
 								<li class="nav-item">
-									<a class="nav-link pl-0" href="clients  ">Clients</a>
+									<a class="nav-link pl-0" href="/clients  ">Clients</a>
 								</li>
 		                    </ul>
 		                </div>
 		            </nav>
 		        </aside>
-				<div>
-					<a href="/applications">All</a>
-					<a href="/applications?status=New">New</a>
-					<a href="/applications?status=In progress">In progress</a>
-					<a href="/applications?status=Completed">Completed</a>
-				</div>
 		        <main class="col" style="min-height: 630px;">
+                    <div>
+						<ul class="nav nav-tabs">
+							<li class="nav-item">
+								<a class="nav-link" href="/applications">All</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/applications?status=New">New</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/applications?status=In progress">In progress</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="/applications?status=Completed">Completed</a>
+							</li>
+						</ul>
+					</div>
 		        	<table class="table table-hover" style="margin:2%">
 						<thead class="thead-light">
 					  		<tr>
@@ -96,8 +108,8 @@
                                 <td><c:out value="${app.origin}"/></td>
                                 <td><c:out value="${app.destination}"/></td>
                                 <td><c:out value="${app.preference}"/></td>
-                                <td><a href="#"><c:out value="${app.driver}"/></a></td>
-                                <td><a href="#"><c:out value="${app.user}"/></a></td>
+                                <td><c:out value="${app.driver}"/></td>
+                                <td><c:out value="${app.user}"/></td>
 								 <td>
 									 <button class="btn btn-primary" data-toggle="modal" data-target="#driver-modal" onclick="setAppNum(<c:out value="${app.id}"/>)">Set driver</button>
 									 <button class="btn btn-primary" onclick="location.href='/delete-application?id=<c:out value="${app.id}"/>'">

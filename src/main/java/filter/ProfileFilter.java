@@ -1,7 +1,6 @@
 package filter;
 
 import dao.DAOImpl;
-import dao.UserDAO;
 import model.User;
 
 import javax.servlet.FilterChain;

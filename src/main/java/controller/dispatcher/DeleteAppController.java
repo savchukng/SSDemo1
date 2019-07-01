@@ -1,4 +1,4 @@
-package controller;
+package controller.dispatcher;
 
 import dao.ApplicationDAO;
 
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/delete-application")
-public class DeleteAppServlet extends HttpServlet {
+public class DeleteAppController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ApplicationDAO appDao = new ApplicationDAO();

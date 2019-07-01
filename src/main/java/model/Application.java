@@ -82,12 +82,12 @@ public class Application {
     }
 
     public Object getDriver() {
-        UserDAO userDAO = new UserDAO();
+        DAOImpl userDAO = new DAOImpl(User.class);
         return userDAO.get(driverId);
     }
 
     public Object getUser() {
-        UserDAO userDAO = new UserDAO();
+        DAOImpl userDAO = new DAOImpl(User.class);
         return userDAO.get(userId);
     }
 

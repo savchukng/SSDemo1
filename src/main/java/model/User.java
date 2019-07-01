@@ -94,6 +94,13 @@ public class User {
     public Vehicle getDriversVehicle(){
         DAOImpl vehicleDAO = new DAOImpl(Vehicle.class);
         Vehicle vehicle = (Vehicle) vehicleDAO.get("driver_id", id);
+        if(vehicle == null){
+            return new Vehicle(){
+                public String toString() {
+                    return "-";
+                }
+            };
+        }
         return vehicle;
     }
 

@@ -1,6 +1,5 @@
-package filter;
+package filter.client;
 
-import dao.UserDAO;
 import model.User;
 
 import javax.servlet.FilterChain;
@@ -13,25 +12,26 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebFilter(filterName = "DriversFilter", urlPatterns = {
-        "/drivers"
+@WebFilter(urlPatterns = {
+        "/user/*",
+        "/request-route"
 })
-public class DriversFilter extends HttpFilter {
+public class UserFilter extends HttpFilter {
+
     @Override
-    public void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws ServletException, IOException {
+    protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
         if(user == null){
-            req.getRequestDispatcher("login.html").forward(req, res);
+            res.sendRedirect("/login.html");
         }
-        else if(user.getUserType().equals("client") || user.getUserType().equals("driver")){
+        else if (!user.getUserType().equals("client")) {
             PrintWriter out = res.getWriter();
             out.println("You don't have permission to do this");
         }
         else {
-            UserDAO userDao = new UserDAO();
-            req.setAttribute("drivers", userDao.getAllDrivers());
-            req.getRequestDispatcher("dispatcher/drivers.jsp").forward(req, res);
+            chain.doFilter(req, res);
         }
     }
+
 }
