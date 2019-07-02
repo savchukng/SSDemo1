@@ -1,9 +1,5 @@
 package controller.client;
 
-import dao.ApplicationDAO;
-import dao.DAOImpl;
-import model.Application;
-import model.Preference;
 import model.User;
 import service.ClientService;
 import service.ServiceFactory;
@@ -14,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
 @WebServlet("/request-route")
 public class RequestRouteController extends HttpServlet {

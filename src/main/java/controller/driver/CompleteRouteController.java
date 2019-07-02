@@ -1,10 +1,5 @@
 package controller.driver;
 
-
-import dao.ApplicationDAO;
-import dao.RouteDAO;
-import model.Route;
-import service.DispatcherService;
 import service.DriverService;
 import service.ServiceFactory;
 
@@ -14,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
 @WebServlet("/complete-route")
 public class CompleteRouteController extends HttpServlet {

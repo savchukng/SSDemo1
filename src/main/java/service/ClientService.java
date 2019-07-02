@@ -28,9 +28,7 @@ public class ClientService {
                                 int yearFrom, int yearTo, int stateFrom, int stateTo, String numberPlate){
         Application app = new Application();
         Date date = new Date();
-        System.out.println(date);
         app.setRegistrationDate(new Date());
-        System.out.println("GOT - " + app.getRegistrationDate());
         app.setUserId(userId);
         app.setOrigin(origin);
         app.setDestination(destination);

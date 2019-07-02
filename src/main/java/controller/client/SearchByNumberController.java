@@ -1,8 +1,5 @@
 package controller.client;
 
-import com.google.gson.Gson;
-import dao.DAOImpl;
-import model.Vehicle;
 import service.ClientService;
 import service.ServiceFactory;
 
@@ -12,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 @WebServlet("/search-by-number")
 public class SearchByNumberController extends HttpServlet {

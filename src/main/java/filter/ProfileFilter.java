@@ -25,16 +25,16 @@ public class ProfileFilter extends HttpFilter {
         DAOImpl userDAO = new DAOImpl(User.class);
         session.setAttribute("user", (User)userDAO.get(user.getId()));
         if(user == null){
-            res.sendRedirect("login.html");
+            res.sendRedirect("/login.html");
         }
         else if (user.getUserType().equals("client")){
-            res.sendRedirect("user/profile.jsp");
+            res.sendRedirect("/user/profile.jsp");
         }
         else if (user.getUserType().equals("dispatcher")){
-            res.sendRedirect("dispatcher/profile.jsp");
+            res.sendRedirect("/dispatcher/profile.jsp");
         }
         else if (user.getUserType().equals("driver")){
-            res.sendRedirect("driver/profile.jsp");
+            res.sendRedirect("/driver/profile.jsp");
         }
         else {
             PrintWriter out = res.getWriter();

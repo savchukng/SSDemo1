@@ -1,10 +1,5 @@
 package controller.dispatcher;
 
-import dao.ApplicationDAO;
-import dao.DAOImpl;
-import dao.RouteDAO;
-import model.Application;
-import model.Route;
 import service.DispatcherService;
 import service.ServiceFactory;
 

@@ -1,10 +1,7 @@
 package controller;
 
-import com.google.gson.Gson;
-import dao.UserDAO;
 import model.User;
 import service.AccountService;
-import service.DriverService;
 import service.ServiceFactory;
 
 import javax.servlet.ServletException;
@@ -12,10 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 @WebServlet("/change-email")
 public class ChangeEmailController extends HttpServlet {

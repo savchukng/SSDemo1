@@ -64,7 +64,7 @@ public class Route {
 
     @Override
     public String toString() {
-        return origin + "->" + destination + " ID(" + id + ")";
+        return origin + "->" + destination + " (ID: " + id + ")";
     }
 
     public void setAppId(int appId) {

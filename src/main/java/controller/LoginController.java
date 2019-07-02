@@ -1,8 +1,5 @@
 package controller;
 
-import com.google.gson.Gson;
-import dao.DAOImpl;
-import model.User;
 import service.AccountService;
 import service.ServiceFactory;
 
@@ -11,11 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {

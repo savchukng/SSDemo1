@@ -88,10 +88,10 @@ public class Preference {
 
     public void setvStateFrom(int vStateFrom) {
         if(vStateFrom != 0) {
-            this.vStateFrom = 1;
+            this.vStateFrom = vStateFrom;
         }
         else {
-            this.vStateFrom = vStateFrom;
+            this.vStateFrom = 1;
         }
     }
 
@@ -101,10 +101,10 @@ public class Preference {
 
     public void setvStateTo(int vStateTo) {
         if(vStateTo != 0) {
-            this.vStateTo = 5;
+            this.vStateTo = vStateTo;
         }
         else {
-            this.vStateTo = vStateTo;
+            this.vStateTo = 5;
         }
     }
 

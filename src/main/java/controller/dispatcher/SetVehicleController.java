@@ -1,7 +1,5 @@
 package controller.dispatcher;
 
-import dao.ApplicationDAO;
-import dao.UserDAO;
 import service.DispatcherService;
 import service.ServiceFactory;
 
@@ -11,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 
 @WebServlet("/set-vehicle")
 public class SetVehicleController extends HttpServlet {

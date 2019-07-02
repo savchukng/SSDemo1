@@ -84,8 +84,7 @@ public class DAOImpl implements DAO {
             newObject = constructor.newInstance();
             parseResult(newObject, rs);
         }
-        catch (Exception e){
-            e.printStackTrace();
+        catch (Exception e){ ;
         }
         return newObject;
     }
@@ -104,7 +103,6 @@ public class DAOImpl implements DAO {
             parseResult(newObject, rs);
         }
         catch(Exception e){
-            e.printStackTrace();
         }
         return newObject;
     }
@@ -123,7 +121,6 @@ public class DAOImpl implements DAO {
             parseResult(newObject, rs);
         }
         catch(Exception e){
-            System.out.println(e);
         }
         return newObject;
     }
