@@ -12,12 +12,13 @@ import java.util.Date;
 import java.util.List;
 
 public class ApplicationDAO extends DAOImpl {
+    private final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
     public ApplicationDAO(){
         super(Application.class);
     }
     public void newApplication(Application app){
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String date = formatter.format(app.getRegistrationDate());
+        String date = formatter.format(app.getRegistrationDateObj());
         try(Connection connection = HikariCPDataSource.getConnection();
             Statement stmt = connection.createStatement()){
             String query = "INSERT INTO applications(registration_date, user_id, origin, destination, additional_info, preference_id) VALUES(" +
@@ -31,7 +32,6 @@ public class ApplicationDAO extends DAOImpl {
     }
 
     public void setReceptionDate(int id, Date date){
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String strDate = formatter.format(date);
         try(Connection connection = HikariCPDataSource.getConnection();
             Statement stmt = connection.createStatement()){
@@ -44,7 +44,6 @@ public class ApplicationDAO extends DAOImpl {
     }
 
     public void setCompletionDate(int id, Date date){
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String strDate = formatter.format(date);
         try(Connection connection = HikariCPDataSource.getConnection();
             Statement stmt = connection.createStatement()){

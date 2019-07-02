@@ -59,6 +59,18 @@ public class Application {
         return formatter.format(registrationDate);
     }
 
+    public Date getRegistrationDateObj(){
+        return registrationDate;
+    }
+
+    public Date getReceptionDateObj(){
+        return receptionDate;
+    }
+
+    public Date getCompletionDateObj(){
+        return completionDate;
+    }
+
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }

@@ -70,7 +70,7 @@
 						<td><c:out value="${app.completionDate}"/></td>
 						<td><c:out value="${app.origin}"/></td>
 						<td><c:out value="${app.destination}"/></td>
-						<td><c:out value="${app.preference.vMake} ${app.preference.vModel}"/></td>
+						<td><c:out value="${app.preference}"/></td>
 					</tr>
 				</c:forEach>
 				</tbody>

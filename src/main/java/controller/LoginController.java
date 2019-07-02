@@ -3,6 +3,8 @@ package controller;
 import com.google.gson.Gson;
 import dao.DAOImpl;
 import model.User;
+import service.AccountService;
+import service.ServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,23 +20,22 @@ import java.util.Map;
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
 
+    private AccountService accountService;
+
+    @Override
+    public void init() throws ServletException {
+        accountService = ServiceFactory.getInstance().getAccountService();
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        DAOImpl userDao = new DAOImpl(User.class);
-        User user = (User) userDao.get("username", req.getParameter("username"));
-        PrintWriter out = resp.getWriter();
-        if(user == null || !user.getPassword().equals(req.getParameter("password"))){
-            Map<String, String> options = new LinkedHashMap<>();
-            options.put("error", "Wrong username or password");
-            String json = new Gson().toJson(options);
+        if(!accountService.authorize(req)){
             resp.setContentType("application/json");
             resp.setCharacterEncoding("UTF-8");
-            resp.getWriter().write(json);
+            resp.getWriter().write(accountService.getErrorJSON("Wrong username or password"));
         }
         else {
-            HttpSession session = req.getSession();
-            session.setAttribute("user", user);
             resp.sendRedirect("/index.html");
         }
     }

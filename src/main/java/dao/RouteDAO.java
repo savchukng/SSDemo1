@@ -34,4 +34,9 @@ public class RouteDAO extends DAOImpl {
             e.printStackTrace();
         }
     }
+
+    public void deleteAppRoute(int appId){
+        Route route = (Route) get("app_id", appId);
+        deleteRoute(route.getId());
+    }
 }

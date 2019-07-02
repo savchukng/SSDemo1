@@ -28,6 +28,21 @@
 					}
 				})
 			}
+
+			function setDefault() {
+				if($("#year-from").val() == ""){
+					$("#year-from").val(1980);
+				}
+				if($("#year-to").val() == ""){
+					$("#year-to").val(2019);
+				}
+				if($("#state-from").val() == null){
+					$("#state-from").val(1);
+				}
+				if($("#state-to").val() == null){
+					$("#state-to").val(5);
+				}
+			}
 		</script>
 	</head>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -58,7 +73,7 @@
         </nav>
 		<main class="col " style="min-height: 630px;">
 			<div class="col-md-12 offset-md-3">
-				<form action="request-route" method="post">
+				<form action="/request-route" method="post" onsubmit="setDefault()">
 					<h6 class="display-4" style="margin: 30px 0; font-size: 44px">Route info</h6>
 					<div class="form-group row">
 						<label for="origin" class="col-form-label col-sm-1">*Origin:</label>
@@ -105,22 +120,22 @@
 						<label for="state-from" class="col-form-label col-sm-1">State:</label>
 						<div class="col-sm-2">
 							<select class="form-control" id="state-from" name="stateFrom">
-								<option value="" disabled selected>From</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
+								<option value="0" disabled selected>From</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
 							</select>
 						</div>
 						<div class="col-sm-2">
 							<select class="form-control" id="state-to" name="stateTo">
-								<option value="" disabled selected>To</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-								<option>5</option>
+								<option value="0" disabled selected>To</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
 							</select>
 						</div>
 					</div>

@@ -2,6 +2,8 @@ package controller.dispatcher;
 
 import dao.ApplicationDAO;
 import dao.UserDAO;
+import service.DispatcherService;
+import service.ServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,10 +16,16 @@ import java.util.Date;
 @WebServlet("/set-vehicle")
 public class SetVehicleController extends HttpServlet {
 
+    private DispatcherService dispatcherService;
+
+    @Override
+    public void init() throws ServletException {
+        dispatcherService = ServiceFactory.getInstance().getDispatcherService();
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserDAO appDao = new UserDAO();
-        appDao.setVehicleId(Integer.parseInt(req.getParameter("driverId")), Integer.parseInt(req.getParameter("vehicleId")));
+        dispatcherService.setVehicle(Integer.parseInt(req.getParameter("driverId")), Integer.parseInt(req.getParameter("vehicleId")));
         resp.sendRedirect("/drivers");
     }
 }

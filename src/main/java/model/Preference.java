@@ -75,10 +75,10 @@ public class Preference {
 
     public void setvYearTo(int vYearTo) {
         if(vYearFrom != 0){
-            this.vYearFrom = vYearTo;
+            this.vYearTo  = vYearTo;
         }
         else {
-            this.vYearFrom = 2019;
+            this.vYearTo = 2019;
         }
     }
 
@@ -101,16 +101,16 @@ public class Preference {
 
     public void setvStateTo(int vStateTo) {
         if(vStateTo != 0) {
-            this.vStateFrom = 5;
+            this.vStateTo = 5;
         }
         else {
-            this.vStateFrom = vStateTo;
+            this.vStateTo = vStateTo;
         }
     }
 
     @Override
     public String toString() {
-        return vMake + " " + vModel + "(" + vYearFrom + "-" + vYearTo + ") State: " + vStateFrom + "-" + vStateTo + " " + vNumberPlate;
+        return vMake + " " + vModel + " (" + vYearFrom + "-" + vYearTo + ") State: " + vStateFrom + "-" + vStateTo + " " + vNumberPlate;
     }
 
     public String getvNumberPlate() {

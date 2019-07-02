@@ -1,6 +1,8 @@
 package controller.driver;
 
 import dao.VehicleDAO;
+import service.DriverService;
+import service.ServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,10 +14,16 @@ import java.io.IOException;
 @WebServlet("/set-state")
 public class SetStateController extends HttpServlet {
 
+    private DriverService driverService;
+
+    @Override
+    public void init() throws ServletException {
+        driverService = ServiceFactory.getInstance().getDriverService();
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        VehicleDAO vehicleDAO = new VehicleDAO();
-        vehicleDAO.setState(Integer.parseInt(req.getParameter("vehicleId")), Integer.parseInt(req.getParameter("state")));
+        driverService.setState(Integer.parseInt(req.getParameter("vehicleId")), Integer.parseInt(req.getParameter("state")));
         resp.sendRedirect("/profile");
     }
 }

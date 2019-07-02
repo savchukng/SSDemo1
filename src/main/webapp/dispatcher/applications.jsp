@@ -112,7 +112,7 @@
                                 <td><c:out value="${app.user}"/></td>
 								 <td>
 									 <button class="btn btn-primary" data-toggle="modal" data-target="#driver-modal" onclick="setAppNum(<c:out value="${app.id}"/>)">Set driver</button>
-									 <button class="btn btn-primary" onclick="location.href='/delete-application?id=<c:out value="${app.id}"/>'">
+									 <button class="btn btn-primary" style="margin-top:15px; margin-left:15px;" onclick="location.href='/delete-application?id=<c:out value="${app.id}"/>'">
 										 Delete
 									 </button>
 								 </td>

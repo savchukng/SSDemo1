@@ -3,6 +3,8 @@ package controller;
 
 import dao.DAOImpl;
 import model.User;
+import service.AccountService;
+import service.ServiceFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,14 +16,19 @@ import java.io.IOException;
 @WebServlet("/register")
 public class RegisterController extends HttpServlet {
 
+    private AccountService accountService;
+
+    @Override
+    public void init() throws ServletException {
+        accountService = ServiceFactory.getInstance().getAccountService();
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        DAOImpl userDao = new DAOImpl(User.class);
-        User newUser = new User(req.getParameter("username"), req.getParameter("password"), req.getParameter("email"),
-                req.getParameter("firstName"), req.getParameter("lastName"), req.getParameter("occupation"));
-        userDao.save(newUser);
-        resp.sendRedirect("/request_route.html");
+        accountService.registerUser(req.getParameter("username"), req.getParameter("password"), req.getParameter("email"),
+                                    req.getParameter("firstName"), req.getParameter("lastName"), req.getParameter("occupation"));
+        resp.sendRedirect("/index.html");
     }
 
 }
